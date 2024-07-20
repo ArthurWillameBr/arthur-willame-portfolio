@@ -1,31 +1,23 @@
-"use client"
+"use client";
 
 import { Button } from "@/app/components/button";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { HomePageInfo } from "@/types/page-info";
+import { RichText } from "@/app/components/rich-text";
+import { CMSIcon } from "@/app/components/cms-icon";
 
-const MOCK_CONTACTS = [
-    {
-        url: "https://www.linkedin.com/in/arthur-willame/",
-        icon: <Linkedin />,
-    }, 
-    {
-        url: "https://www.github.com",
-        icon: <Github />
-    },
-    {
-        url: "link email",
-        icon: <Mail />
-    }
-]
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  homeInfo: HomePageInfo;
+}
 
+export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
   const handleContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
-    } 
-  }
+    }
+  };
   return (
     <section className="w-full h-[755px] bg-hero-image bg-cover bg-center bg-no-repeat flex flex-col justify-start pb-10 sm:pb-32 py-32 lg:pb-[110px]">
       <div className="container flex items-center flex-col text-center">
@@ -37,26 +29,26 @@ export const HeroSection = () => {
             Desenvolvedor <span className="text-violet-500">Front-end</span>
           </p>
           <div className="flex flex-col items-center justify-center w-[422px] md:w-[522px] lg:w-[622px]">
-            <p className="text-sm md:text-base">
-              Tive o meu primeiro contanto com linhas de código aos 17 anos,
-              estudando javascript e lógica de programação. Essa experiência me
-              proporcionou uma imersão fascinante no universo do
-              desenvolvimento. Desde então eu decidi que queria fazer isso na
-              minha vida - eu queria ser um programador. Venho me aprimorando e
-              estudando diariamente seja por meio da faculdade, criação de
-              projetos pessoas, ou por cursos online. Meu foco é o
-              desenvolvimento web.
-            </p>
+            <div className="text-sm md:text-base">
+              <RichText content={homeInfo.introduction.raw} />
+            </div>
           </div>
           <div>
-          <div className="flex items-center justify-center gap-3 pt-1 pb-3">
-                {MOCK_CONTACTS.map((contact, index) => (
-                    <a key={index} href={contact.url} target="_black" className="hover:text-violet-600 transition-all">{contact.icon}</a>
-                ))}
+            <div className="flex items-center justify-center gap-3 pt-1 pb-3">
+              {homeInfo.socials.map((contact, index) => (
+                <a
+                  key={index}
+                  href={contact.url}
+                  target="_black"
+                  className="hover:text-violet-600 transition-all"
+                >
+                  <CMSIcon icon={contact.iconSvg} />
+                </a>
+              ))}
             </div>
             <Button onClick={handleContact} className="shadow-lg font-semibold">
-              Entre em contato 
-              <ArrowRight className="size-5"/>
+              Entre em contato
+              <ArrowRight className="size-5" />
             </Button>
           </div>
         </div>
