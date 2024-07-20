@@ -4,9 +4,23 @@
 
 @layer base {
   body {
-    @apply bg-[#10091B] text-gray-100 antialiased; 
+    @apply bg-zinc-950 text-gray-100 antialiased; 
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.45rem;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #171717;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #7f1af1;
+    border-radius: 999px;
   }
 }
+
 
 @layer utilities {
   .container {
