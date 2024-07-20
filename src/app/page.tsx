@@ -1,4 +1,5 @@
 import { HeroSection } from "./components/pages/home/hero-section";
+import { HighlightedProjects } from "./components/pages/home/highlighted-projects";
 import { KnowTechs } from "./components/pages/know-techs";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <KnowTechs />
+      <HighlightedProjects />
     </main>
   );
 }
