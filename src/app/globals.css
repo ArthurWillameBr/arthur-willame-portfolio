@@ -4,14 +4,11 @@
 
 @layer base {
   body {
-    @apply bg-[#10091B] text-gray-100
+    @apply bg-[#10091B] text-gray-100 antialiased; 
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
   .container {
     @apply mx-auto w-full max-w-[1200px] px-6;
   }
