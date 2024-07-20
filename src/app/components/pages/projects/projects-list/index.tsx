@@ -12,7 +12,7 @@ export const ProjectsList = () => {
           {...fadeUpAnimation}
           transition={{ duration: 0.5 }}
         >
-          <Link href={`/projects/`}>
+          <Link href={`/projects/connectNotes`}>
             <ProjectCard />
           </Link>
         </motion.div>
