@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "./components/header";
 import { ContactForm } from "./components/contact-form";
 import { Footer } from "./components/footer";
+import { BackToTop } from "./components/back-to-top";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Header />
         {children}
+        <BackToTop />
         <ContactForm />
         <Footer />
       </body>
