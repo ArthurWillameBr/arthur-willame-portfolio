@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/header";
 import { ContactForm } from "./components/contact-form";
+import { Footer } from "./components/footer";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -20,10 +21,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={poppins.className}>
-        <Header/> 
+        <Header />
         {children}
         <ContactForm />
-        </body>
+        <Footer />
+      </body>
     </html>
   );
 }
