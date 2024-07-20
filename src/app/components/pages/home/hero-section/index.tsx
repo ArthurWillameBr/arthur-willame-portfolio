@@ -1,6 +1,7 @@
+"use client"
+
 import { Button } from "@/app/components/button";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
-
 
 const MOCK_CONTACTS = [
     {
@@ -18,6 +19,13 @@ const MOCK_CONTACTS = [
 ]
 
 export const HeroSection = () => {
+
+  const handleContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    } 
+  }
   return (
     <section className="w-full h-[755px] bg-hero-image bg-cover bg-center bg-no-repeat flex flex-col justify-start pb-10 sm:pb-32 py-32 lg:pb-[110px]">
       <div className="container flex items-center flex-col text-center">
@@ -46,7 +54,7 @@ export const HeroSection = () => {
                     <a key={index} href={contact.url} target="_black" className="hover:text-violet-600 transition-all">{contact.icon}</a>
                 ))}
             </div>
-            <Button className="shadow-lg font-semibold">
+            <Button onClick={handleContact} className="shadow-lg font-semibold">
               Entre em contato 
               <ArrowRight className="size-5"/>
             </Button>

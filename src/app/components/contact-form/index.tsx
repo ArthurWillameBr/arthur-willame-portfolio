@@ -1,34 +1,37 @@
-"use client"
+"use client";
 
 import { fadeUpAnimation } from "@/app/lib/animations";
 import { motion } from "framer-motion";
 import { Button } from "../button";
 import { SectionTitle } from "../section-title";
 import { ArrowRight } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { useForm } from "react-hook-form";
 
 const contactFormData = z.object({
   name: z.string().nonempty(),
   email: z.string().email(),
   message: z.string().nonempty(),
-})
+});
 
-type ContactForm = z.infer<typeof contactFormData>
+type ContactForm = z.infer<typeof contactFormData>;
 
 export const ContactForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<ContactForm>({
+    resolver: zodResolver(contactFormData),
+  });
 
-    const { register, handleSubmit, formState: { isSubmitting} } = useForm<ContactForm>({
-        resolver: zodResolver(contactFormData)
-    })
-
-    function onSubmit() {
-        console.log("ola")
-    }
+  function onSubmit() {
+    console.log("ola");
+  }
   return (
     <section
-      className="py-16 px-6 md:py-32 flex items-center justify-center bg-zinc-950 bg-hero-image bg-cover bg-center bg-no-repeat"
+      className="py-16 px-6 md:py-32  flex items-center justify-center bg-zinc-950 bg-hero-image bg-cover bg-center bg-no-repeat"
       id="contact"
     >
       <div className="w-full max-w-[420px] mx-auto">
@@ -44,18 +47,18 @@ export const ContactForm = () => {
         >
           <input
             placeholder="Nome"
-            className="w-full h-12 bg-gray-800 rounded-lg placeholder:text-gray-400 text-gray-50 p-4 focus:outline-none focus:ring-2 ring-emerald-600"
+            className="w-full h-12 bg-gray-800 rounded-lg placeholder:text-gray-400 text-gray-50 p-4 focus:outline-none focus:ring-2 ring-violet-600"
             {...register("name")}
           />
           <input
             placeholder="E-mail"
             type="email"
-            className="w-full h-12 bg-gray-800 rounded-lg placeholder:text-gray-400 text-gray-50 p-4 focus:outline-none focus:ring-2 ring-emerald-600"
+            className="w-full h-12 bg-gray-800 rounded-lg placeholder:text-gray-400 text-gray-50 p-4 focus:outline-none focus:ring-2 ring-violet-600"
             {...register("email")}
           />
           <textarea
             placeholder="Mensagem"
-            className="resize-none w-full h-[138px] bg-gray-800 rounded-lg placeholder:text-gray-400 text-gray-50 p-4 focus:outline-none focus:ring-2 ring-emerald-600"
+            className="resize-none w-full h-[138px] bg-gray-800 rounded-lg placeholder:text-gray-400 text-gray-50 p-4 focus:outline-none focus:ring-2 ring-violet-600"
             {...register("message")}
             maxLength={500}
           />
