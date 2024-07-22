@@ -6,8 +6,13 @@ import { ArrowRight, NotepadText } from "lucide-react";
 import { TechBadge } from "@/app/components/tech-badge";
 import { Link } from "@/app/components/link";
 import { fadeUpAnimation } from "@/app/lib/animations";
+import { Project } from "@/types/projects";
 
-export const ProjectCard = () => {
+interface ProjectCardProps {
+  project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
       <motion.div
@@ -25,8 +30,8 @@ export const ProjectCard = () => {
           transition={{ duration: 0.3, delay: 0.3 }}
         >
           <Image
-            src="/connectNotes.png"
-            alt="image"
+            src={project.thumbnail.url}
+            alt={project.title}
             width={420}
             height={304}
             quality={100}
@@ -42,7 +47,7 @@ export const ProjectCard = () => {
           transition={{ duration: 0.7 }}
         >
           <NotepadText />
-          ConnectNotes
+          {project.title}
         </motion.h3>
 
         <motion.p
@@ -50,18 +55,22 @@ export const ProjectCard = () => {
           className="text-gray-400 my-6"
           transition={{ duration: 0.2, delay: 0.3 }}
         >
-          Lorem ipsum, dolor sit amet consectetur adipisitur, quis, id
-          architecto a perspiciatis amet corrupti?
+         {project.shortDescription}
         </motion.p>
         <div className="flex gap-x-2 gap-y-3 flex-wrap lg:max-w-[350px] mb-8">
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
-          <TechBadge name="Next.js" />
+         {project.technologies.map((tech, i) => (
+          <TechBadge 
+            name={tech.name}
+            key={tech.name}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.2, delay: 0.5 + i * 0.1 }}
+          />
+         ))}
         </div>
 
-        <Link href={`/projects/`}>
+        <Link href={`/projects/${project.slug}`}>
           Ver projeto
           <ArrowRight />
         </Link>
