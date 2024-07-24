@@ -4,10 +4,11 @@ import { fadeUpAnimation } from "@/app/lib/animations";
 import { motion } from "framer-motion";
 import { Button } from "../button";
 import { SectionTitle } from "../section-title";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const contactFormData = z.object({
   name: z.string().nonempty(),
@@ -22,12 +23,19 @@ export const ContactForm = () => {
     register,
     handleSubmit,
     formState: { isSubmitting },
+    reset,
   } = useForm<ContactForm>({
     resolver: zodResolver(contactFormData),
   });
 
-  function onSubmit() {
-    console.log("ola");
+  async function onSubmit({ email, message, name }: ContactForm) {
+    try {
+      await axios.post("/api/contact", { email, message, name });
+      console.log("Mensagem enviada com sucesso!");
+      reset();
+    } catch (error) {
+      console.log("Erro ao enviar mensagem", error);
+    }
   }
   return (
     <section
@@ -64,10 +72,11 @@ export const ContactForm = () => {
           />
 
           <div className="relative w-max mx-auto mt-6">
-            <Button className="z-[2] relative" disabled={isSubmitting}>
-              Enviar mensagem
-              <ArrowRight size={18} />
-            </Button>
+              <Button className="z-[2] relative" disabled={isSubmitting}>
+                {isSubmitting && <Loader2 className="size-4 animate-spin"/> }
+                Enviar mensagem
+                <ArrowRight size={18} />
+              </Button>
             <div className="absolute inset-0 bg-violet-600 blur-2xl opacity-20" />
           </div>
         </motion.form>
