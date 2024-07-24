@@ -5,6 +5,7 @@ import { Header } from "./components/header";
 import { ContactForm } from "./components/contact-form";
 import { Footer } from "./components/footer";
 import { BackToTop } from "./components/back-to-top";
+import { Toaster } from "react-hot-toast";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={poppins.className}>
+        <Toaster /> 
         <Header />
         {children}
         <BackToTop />

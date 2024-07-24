@@ -9,7 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
+import { toast, Toaster } from "react-hot-toast"
+ 
 const contactFormData = z.object({
   name: z.string().nonempty(),
   email: z.string().email(),
@@ -31,10 +32,20 @@ export const ContactForm = () => {
   async function onSubmit({ email, message, name }: ContactForm) {
     try {
       await axios.post("/api/contact", { email, message, name });
-      console.log("Mensagem enviada com sucesso!");
+      toast.success("Mensagem enviada com sucesso!", {
+        style: {
+          background: "#16a34a",
+          color: "#f7fee7"
+        },
+      });
       reset();
     } catch (error) {
-      console.log("Erro ao enviar mensagem", error);
+      toast.error("Erro ao enviar mensagem. Tente novamente mais tarde", {
+        style: {
+          background: "#dc2626",
+          color: "#f7fee7"
+        }
+      })
     }
   }
   return (
@@ -70,13 +81,12 @@ export const ContactForm = () => {
             {...register("message")}
             maxLength={500}
           />
-
           <div className="relative w-max mx-auto mt-6">
-              <Button className="z-[2] relative" disabled={isSubmitting}>
-                {isSubmitting && <Loader2 className="size-4 animate-spin"/> }
-                Enviar mensagem
-                <ArrowRight size={18} />
-              </Button>
+            <Button className="z-[2] relative" disabled={isSubmitting}>
+              {isSubmitting && <Loader2 className="size-4 animate-spin" />}
+              Enviar mensagem
+              <ArrowRight size={18} />
+            </Button>
             <div className="absolute inset-0 bg-violet-600 blur-2xl opacity-20" />
           </div>
         </motion.form>
