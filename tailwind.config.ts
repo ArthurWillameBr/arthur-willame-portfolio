@@ -12,7 +12,7 @@ const config: Config = {
         primary: "#5b21b6",
       },
       backgroundImage: {
-        "hero-image": 'url("/bg.png")',
+        "hero-image": 'url("/hero.png")',
       },
       
     },
