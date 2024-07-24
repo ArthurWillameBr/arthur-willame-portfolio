@@ -13,6 +13,10 @@ export type ProjectSection = {
   }
 }
 
+export type technologies = {
+  name: string
+}
+
 export type Project = {
   slug: string
   thumbnail: {
