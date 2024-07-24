@@ -6,7 +6,6 @@ import { HomePageInfo } from "@/types/page-info";
 import { RichText } from "@/app/components/rich-text";
 import { CMSIcon } from "@/app/components/cms-icon";
 
-
 interface HeroSectionProps {
   homeInfo: HomePageInfo;
 }

@@ -9,10 +9,13 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
+
 export const metadata: Metadata = {
-  title: "AW Dev | Portfólio",
-  description: "Arthur Willame Portfólio",
-};
+  title: {
+    default: 'Home | AW Dev',
+    template: '%s | AW Dev',
+  },
+}
 
 export default function RootLayout({
   children,
