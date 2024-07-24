@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { HomePageInfo } from "@/types/page-info";
 import { RichText } from "@/app/components/rich-text";
 import { CMSIcon } from "@/app/components/cms-icon";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   homeInfo: HomePageInfo;
@@ -20,12 +21,18 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
   return (
     <section className="w-full h-[755px] bg-hero-image bg-cover bg-center bg-no-repeat flex flex-col justify-start pb-10 sm:pb-32 py-32 lg:pb-[110px]">
       <div className="container flex items-center flex-col text-center">
-        <div className="flex flex-col items-center space-y-2 lg:space-y-4 justify-center">
+        <motion.div
+          className="flex flex-col items-center space-y-2 lg:space-y-4 justify-center"
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.5 }}
+        >
           <h1 className="text-[30px] md:text-4xl lg:text-5xl tracking-tight font-semibold">
             Olá, eu sou o Arthur Willame
           </h1>
           <p className="text-[24px] md:text-2xl lg:text-3xl font-semibold">
-            Desenvolvedor <span className="text-violet-500">Front-end</span>
+            Desenvolvedor <span className="text-violet-600">Front-end</span>
           </p>
           <div className="flex flex-col items-center justify-center w-[388px] md:w-[522px] lg:w-[622px]">
             <div className="text-sm md:text-base">
@@ -50,7 +57,7 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
               <ArrowRight className="size-5" />
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
