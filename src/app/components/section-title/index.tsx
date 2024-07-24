@@ -23,7 +23,7 @@ export const SectionTitle = ({
   return (
     <div className={cn('flex flex-col gap-4', className)}>
       <motion.span
-        className="text-sm text-violet-400 tracking-wider font-medium"
+        className="text-sm text-violet-500 tracking-wider font-medium"
         {...animProps}
         transition={{ duration: 0.5 }}
       >{`./${subtitle}`}</motion.span>
