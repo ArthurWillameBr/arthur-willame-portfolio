@@ -22,13 +22,13 @@ export const HeroSection = ({ homeInfo }: HeroSectionProps) => {
     <section className="w-full h-[755px] bg-hero-image bg-cover bg-center bg-no-repeat flex flex-col justify-start pb-10 sm:pb-32 py-32 lg:pb-[110px]">
       <div className="container flex items-center flex-col text-center">
         <div className="flex flex-col items-center space-y-2 lg:space-y-4 justify-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl tracking-tight font-semibold">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl tracking-tight font-semibold">
             Olá, eu sou o Arthur Willame
           </h1>
-          <p className="text-2xl md:text-2xl lg:text-3xl font-semibold">
+          <p className="text-xl md:text-2xl lg:text-3xl font-semibold">
             Desenvolvedor <span className="text-violet-500">Front-end</span>
           </p>
-          <div className="flex flex-col items-center justify-center w-[422px] md:w-[522px] lg:w-[622px]">
+          <div className="flex flex-col items-center justify-center w-[388px] md:w-[522px] lg:w-[622px]">
             <div className="text-sm md:text-base">
               <RichText content={homeInfo.introduction.raw} />
             </div>
