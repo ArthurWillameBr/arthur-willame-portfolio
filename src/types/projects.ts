@@ -25,7 +25,7 @@ export type Project = {
   title: string
   shortDescription: string
   technologies: KnownTech[]
-  pageThubnail: {
+  pageThumbnail: {
     url: string
   }
   sections: ProjectSection[]
