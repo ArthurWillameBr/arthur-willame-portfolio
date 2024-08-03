@@ -9,6 +9,11 @@ import { fadeUpAnimation, techBadgeAnimation } from "@/app/lib/animations";
 import { ArrowLeft, Github, Link2 } from "lucide-react";
 import { Project } from "@/types/projects";
 import { RichText } from "@/app/components/rich-text";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projetos",
+};
 
 interface ProjectDetailsProps {
   project: Project;
