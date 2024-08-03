@@ -47,7 +47,6 @@ const getProjectDetails = async (slug: string): Promise<ProjectPageData> => {
 export default async function Project({params: {slug} }:ProjectPageProps) {
   const {project} = await getProjectDetails(slug);
 
-
   return (
     <>
       <ProjectDetails project={project} />
